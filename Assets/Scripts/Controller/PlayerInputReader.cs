@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ namespace Autophobia.PlayerComponents
             _playerMap.PlayerActionMap.Movement.canceled += OnMovement;
 
             _playerMap.PlayerActionMap.Interact.started += OnInteract;
+            _playerMap.PlayerActionMap.GetUp.started += OnKeyGetUp;
 
             _playerMap.Enable();
 
@@ -34,8 +36,14 @@ namespace Autophobia.PlayerComponents
             _playerSystem.Interact();
         }
 
+        private void OnKeyGetUp(InputAction.CallbackContext context)
+        {
+            _playerSystem.OnGetUp();
+        }
+
         public void SetLock(bool isLocked)
         {
+            // !!!ПРОБЛЕМА ТУТ!!!
             if (isLocked)
             {
                 _playerMap.Disable();
@@ -44,6 +52,20 @@ namespace Autophobia.PlayerComponents
             else
             {
                 _playerMap.Enable();
+            }
+        }
+
+        public void RestrictMainMove(bool isRestricted)
+        {
+            if (isRestricted)
+            {
+                _playerMap.PlayerActionMap.Movement.performed -= OnMovement;
+                _playerMap.PlayerActionMap.Movement.canceled -= OnMovement;
+            }
+            else
+            {
+                _playerMap.PlayerActionMap.Movement.performed += OnMovement;
+                _playerMap.PlayerActionMap.Movement.canceled += OnMovement;
             }
         }
     }
