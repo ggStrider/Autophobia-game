@@ -1,7 +1,9 @@
 using UnityEngine;
+using Cinemachine;
 
 using Autophobia.PlayerComponents.Interact;
 using Autophobia.Events;
+using Autophobia.Interact.Features;
 
 namespace Autophobia.PlayerComponents
 {
@@ -11,10 +13,13 @@ namespace Autophobia.PlayerComponents
         [SerializeField] private float _rayCheckDistance;
 
         [SerializeField] private Camera _visionCamera;
+        [SerializeField] private CinemachineVirtualCamera _playerVirtualCamera;
         [SerializeField] private CheckObjectsInRay _checkInRay;
 
         [SerializeField] private bool _canInteract = true;
 
+        private SitOnObject _currentSitting;
+        private CinemachinePOV _cinemachinePOV;
         private Rigidbody _rigidbody;
         private Vector2 _direction;
 
@@ -35,9 +40,33 @@ namespace Autophobia.PlayerComponents
             }
         }
 
+        public void GetCurrentSitComponent(SitOnObject currentSitComponent)
+        {
+            _currentSitting = currentSitComponent;
+        }
+
+        public void OnGetUp()
+        {
+            if(_currentSitting != null)
+                _currentSitting.GetUp();
+        }
+
+        public void SetRestrictXPositionCameraAngle(Vector2 maxAngles)
+        {
+            _cinemachinePOV.m_HorizontalAxis.m_MinValue = maxAngles.x;
+            _cinemachinePOV.m_HorizontalAxis.m_MinValue = maxAngles.y;
+        }
+
+        public void SetCameraRotation(Vector2 lookAngle)
+        {
+            _cinemachinePOV.m_HorizontalAxis.Value = lookAngle.x;
+            _cinemachinePOV.m_VerticalAxis.Value = lookAngle.y;
+        }
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _cinemachinePOV = _playerVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
         }
         
         private void FixedUpdate()
