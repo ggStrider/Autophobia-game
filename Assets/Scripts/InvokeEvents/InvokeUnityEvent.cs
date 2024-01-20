@@ -11,14 +11,12 @@ namespace Autophobia.Events
 
         public void InvokeEvent()
         {
-            if (_canInvoke)
-            {
-                _action?.Invoke();
-                
-                if(_canInvokeOnce)
-                {
-                    _canInvoke = false;
-                }
+            if (!_canInvoke) return;
+
+            _action?.Invoke();
+            if(_canInvokeOnce) 
+            { 
+                _canInvoke = false; 
             }
         }
 

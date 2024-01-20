@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,7 +42,6 @@ namespace Autophobia.PlayerComponents
 
         public void SetLock(bool isLocked)
         {
-            // !!!ПРОБЛЕМА ТУТ!!!
             if (isLocked)
             {
                 _playerMap.Disable();
