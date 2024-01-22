@@ -1,3 +1,4 @@
+using Autophobia.Dialogues;
 using UnityEngine;
 using Cinemachine;
 
@@ -19,9 +20,10 @@ namespace Autophobia.PlayerComponents
         [SerializeField] private bool _canInteract = true;
 
         private SitOnObject _currentSitting;
-        private CinemachinePOV _cinemachinePOV;
+        private CinemachinePOV _playerCinemachinePov;
         private Rigidbody _rigidbody;
         private Vector2 _direction;
+        private DialogueTalk _dialogue;
 
         public void SetDirection(Vector2 direction)
         {
@@ -30,14 +32,17 @@ namespace Autophobia.PlayerComponents
 
         public void Interact()
         {
-            if (_canInteract)
-            {
-                var result = _checkInRay.Check(_visionCamera.transform.position,
-                _visionCamera.transform.forward, _rayCheckDistance);
+            if (!_canInteract) return;
 
-                var objectInvokeComponent = result?.GetComponent<InvokeUnityEvent>();
-                objectInvokeComponent?.InvokeEvent();
-            }
+            var playerCamera = _visionCamera.transform;
+            var result = _checkInRay.Check(playerCamera.position,
+                playerCamera.forward, _rayCheckDistance);
+
+            if (result == null) return;
+            var objectInvokeComponent = result.GetComponent<InvokeUnityEvent>();
+
+            if (objectInvokeComponent == null) return;
+            objectInvokeComponent.InvokeEvent();
         }
 
         public void GetCurrentSitComponent(SitOnObject currentSitComponent)
@@ -45,30 +50,41 @@ namespace Autophobia.PlayerComponents
             _currentSitting = currentSitComponent;
         }
 
+        public void GetCurrentDialogue(DialogueTalk dialogue)
+        {
+            _dialogue = dialogue;
+        }
+
+        public void OnRebuildDialogue()
+        {
+            if (_dialogue == null) return;
+            _dialogue.ReBuildDialogue();
+        }
+
         public void OnGetUp()
         {
-            if(_currentSitting != null)
+            if (_currentSitting != null)
                 _currentSitting.GetUp();
         }
 
         public void SetRestrictXPositionCameraAngle(Vector2 maxAngles)
         {
-            _cinemachinePOV.m_HorizontalAxis.m_MinValue = maxAngles.x;
-            _cinemachinePOV.m_HorizontalAxis.m_MinValue = maxAngles.y;
+            _playerCinemachinePov.m_HorizontalAxis.m_MinValue = maxAngles.x;
+            _playerCinemachinePov.m_HorizontalAxis.m_MinValue = maxAngles.y;
         }
 
         public void SetCameraRotation(Vector2 lookAngle)
         {
-            _cinemachinePOV.m_HorizontalAxis.Value = lookAngle.x;
-            _cinemachinePOV.m_VerticalAxis.Value = lookAngle.y;
+            _playerCinemachinePov.m_HorizontalAxis.Value = lookAngle.x;
+            _playerCinemachinePov.m_VerticalAxis.Value = lookAngle.y;
         }
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            _cinemachinePOV = _playerVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
+            _playerCinemachinePov = _playerVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
         }
-        
+
         private void FixedUpdate()
         {
             var cameraForward = _visionCamera.transform.forward;
@@ -81,7 +97,8 @@ namespace Autophobia.PlayerComponents
             _rigidbody.MovePosition(_rigidbody.position + movementDirection * _speed * Time.fixedDeltaTime);
 
 #if UNITY_EDITOR
-            Debug.DrawRay(_visionCamera.transform.position, _visionCamera.transform.forward * _rayCheckDistance, Color.green);
+            Debug.DrawRay(_visionCamera.transform.position, _visionCamera.transform.forward * _rayCheckDistance,
+                Color.green);
 #endif
         }
     }
