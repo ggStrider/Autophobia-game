@@ -30,5 +30,10 @@ namespace Autophobia.Model
 
             return false;
         }
+
+        public void GetAnswer(int index)
+        {
+            _data.AnswerIndex = index;
+        }
     }
 }

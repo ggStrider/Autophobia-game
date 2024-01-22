@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
-
+using Autophobia.Model;
+using Autophobia.PlayerComponents;
 using System;
 using System.Collections.Generic;
 
@@ -13,13 +15,36 @@ namespace Autophobia.Dialogues
         [SerializeField] private List<GameObject> _answerObjectsParents;
 
         [SerializeField] private List<DialogueInfo> _dialoguesData = new List<DialogueInfo>();
-        
+
+        [SerializeField] private UnityEvent _dialogueIsStarted;
+        [SerializeField] private UnityEvent _dialogueIsEnded;
+
+        [SerializeField] private bool _canUseOnce;
+        private bool _canUse;
+
+        private GameSession _gameSession;
+        private int _answerIndex => _gameSession.Data.AnswerIndex;
         private int _index;
 
+        private void Start()
+        {
+            _gameSession = FindObjectOfType<GameSession>();
+        }
+
+        [ContextMenu("start dialogue")]
         public void OnDialogueStart()
         {
-            if (_dialoguesData.Count == 0) return;
+            if (_dialoguesData.Count == 0 || !_canUse) return;
+            if (_canUseOnce) _canUse = false;
             
+            _dialogueIsStarted?.Invoke();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            var player = FindObjectOfType<PlayerSystem>();
+            player.GetCurrentDialogue(this);
+
             _dialogueObjectParent.SetActive(true);
             OnShowMessage();
         }
@@ -43,16 +68,25 @@ namespace Autophobia.Dialogues
             for (var i = 0; i < answersCount; i++)
             {
                 _answerObjectsParents[i].SetActive(true);
+
+                var currentAnswer = _dialoguesData[_index].Answers[i];
+                currentAnswer.AnswerComponent.text = currentAnswer.PlayerAnswer;
             }
         }
 
-        public void GetAnswerInt(int answerInt)
+        public void ReBuildDialogue()
         {
-            var haveToRespondOnPlayerAnswer = _dialoguesData[_index].Answers[answerInt].HaveToRespond; 
+            if (_dialoguesData.Count <= _index + 1)
+            {
+                EndDialogue();
+                return;
+            }
+
+            var haveToRespondOnPlayerAnswer = _dialoguesData[_index].Answers[_answerIndex].HaveToRespond;
             if (haveToRespondOnPlayerAnswer)
             {
                 var nextDialogueInfo = _dialoguesData[_index + 1];
-                var companionRespond = _dialoguesData[_index].Answers[answerInt].CompanionRespond;
+                var companionRespond = _dialoguesData[_index].Answers[_answerIndex].CompanionRespond;
 
                 nextDialogueInfo.dialogueText = companionRespond;
             }
@@ -60,7 +94,20 @@ namespace Autophobia.Dialogues
             _index++;
             OnShowMessage();
         }
-        
+
+        private void EndDialogue()
+        {
+            _dialogueIsEnded?.Invoke();
+
+            var player = FindObjectOfType<PlayerSystem>();
+            player.GetCurrentDialogue(null);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            _dialogueObjectParent.SetActive(false);
+        }
+
         [Serializable]
         public class DialogueInfo
         {
@@ -73,9 +120,12 @@ namespace Autophobia.Dialogues
         [Serializable]
         public class AnswersInfo
         {
-            [SerializeField] private bool _haveToRespond;
+            [SerializeField] private TextMeshProUGUI _answerComponent;
+            public TextMeshProUGUI AnswerComponent => _answerComponent;
+
+            [Space] [SerializeField] private bool _haveToRespond;
             public bool HaveToRespond => _haveToRespond;
-            
+
             [SerializeField] private string _playerAnswer;
             public string PlayerAnswer => _playerAnswer;
 
