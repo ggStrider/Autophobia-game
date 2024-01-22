@@ -10,6 +10,7 @@ namespace Autophobia.Events
     public class InvokeDelayedEvent : MonoBehaviour
     {
         [SerializeField] private List<DelayedEvent> _delayedEvent = new List<DelayedEvent>();
+        private const byte _minimumTimersArrayToReset = 1;
 
         [ContextMenu("Invoke Events")]
         public void OnInvokeEvents()
@@ -20,25 +21,23 @@ namespace Autophobia.Events
 
         private IEnumerator InvokeEvents()
         {
-            for (var i = 0; i < _delayedEvent.Count; i++)
+            foreach (var delayedEventOne in _delayedEvent)
             {
-                yield return new WaitForSeconds(_delayedEvent[i].delay);
-                _delayedEvent[i].action.Invoke();
+                yield return new WaitForSeconds(delayedEventOne.delay);
+                delayedEventOne.action.Invoke();
             }
         }
 
         private void ResetTimers()
         {
-            var minimumTimersArrayToReset = 1;
-            if (_delayedEvent.Count < minimumTimersArrayToReset) return;
-
+            if (_delayedEvent.Count < _minimumTimersArrayToReset) return;
+            
             for (var i = 1; i < _delayedEvent.Count; i++)
             {
-                if (_delayedEvent[i].isTimersConsistent && !_delayedEvent[i].previousTimerIsCounted)
-                {
-                    _delayedEvent[i].previousTimerIsCounted = true;
-                    _delayedEvent[i].delay += _delayedEvent[i - 1].delay;
-                }
+                if (!_delayedEvent[i].isTimersConsistent || _delayedEvent[i].previousTimerIsCounted) continue;
+                
+                _delayedEvent[i].previousTimerIsCounted = true;
+                _delayedEvent[i].delay += _delayedEvent[i - 1].delay;
             }
         }
 
