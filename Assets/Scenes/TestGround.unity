@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24809d6a81246974a962141797b6cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 1605228977}
   _place: {fileID: 482529750}
   _sitOffset: {x: 0, y: 1, z: 0}
   _getUpPlace: {fileID: 1019412444}
