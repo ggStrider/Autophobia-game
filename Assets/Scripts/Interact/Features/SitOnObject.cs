@@ -1,7 +1,6 @@
+using Autophobia.PlayerComponents;
 using UnityEngine;
 using UnityEngine.Events;
-
-using Autophobia.PlayerComponents;
 
 namespace Autophobia.Interact.Features
 {
@@ -9,58 +8,51 @@ namespace Autophobia.Interact.Features
     {
         [SerializeField] private Transform _player;
 
-        [Space]
-        [SerializeField] private Transform _place;
+        [Space] [SerializeField] private Transform _place;
         [SerializeField] private Vector3 _sitOffset;
 
-        [Space(5)]
-        [SerializeField] private Transform _getUpPlace;
+        [Space(5)] [SerializeField] private Transform _getUpPlace;
         [SerializeField] private Vector3 _getUpOffset;
 
-        [Space]
-        [SerializeField] private bool _canSit;
+        [Space] [SerializeField] private bool _canSit;
         [SerializeField] private bool _canGetUp;
 
-        [Space]
-        [SerializeField] private UnityEvent _satEvent;
+        [Space] [SerializeField] private UnityEvent _satEvent;
         [SerializeField] private UnityEvent _gotUpEvent;
 
         public void Sit()
         {
-            if (_canSit)
-            {
-                _canSit = false;
+            if (!_canSit) return;
 
-                var isSitting = true;
-                ChangePlayerSettings(isSitting);
 
-                var placeWithOffset = _place.transform.position + _sitOffset;
-                _player.position = placeWithOffset;
+            _canSit = false;
 
-                _satEvent?.Invoke();
-            }
+            ChangePlayerSettings(true);
+
+            var placeWithOffset = _place.transform.position + _sitOffset;
+            _player.position = placeWithOffset;
+
+            _satEvent?.Invoke();
         }
 
         public void GetUp()
         {
-            if (_canGetUp)
-            {
-                _canGetUp = false;
+            if (!_canGetUp) return;
 
-                var isSitting = false;
-                ChangePlayerSettings(isSitting);
+            _canGetUp = false;
 
-                var getUpPlaceWithOffset = _getUpPlace.transform.position + _getUpOffset;
-                _player.position = getUpPlaceWithOffset;
+            ChangePlayerSettings(false);
 
-                _gotUpEvent?.Invoke();
-            }
+            var getUpPlaceWithOffset = _getUpPlace.transform.position + _getUpOffset;
+            _player.position = getUpPlaceWithOffset;
+
+            _gotUpEvent?.Invoke();
         }
 
         private void ChangePlayerSettings(bool isSitting)
         {
             _canGetUp = false;
-
+            
             var playerMap = _player.GetComponent<PlayerInputReader>();
             playerMap.RestrictMainMove(isSitting);
 
@@ -69,6 +61,8 @@ namespace Autophobia.Interact.Features
 
             var playerSystem = _player.GetComponent<PlayerSystem>();
             playerSystem.GetCurrentSitComponent(isSitting ? this : null);
+            
+            playerSystem.SetDirection(Vector2.zero);
         }
 
         public void CanGetUp(bool canGetUp)

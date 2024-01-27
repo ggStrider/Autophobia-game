@@ -31,9 +31,14 @@ namespace Autophobia.Model
             return false;
         }
 
-        public void GetAnswer(int index)
+        public void GetDialogueAnswer(int index)
         {
-            _data.AnswerIndex = index;
+            _data.DialogueAnswerIndex = index;
+        }
+
+        public void GetChatAnswer(int index)
+        {
+            _data.ChatAnswerIndex = index;
         }
     }
 }

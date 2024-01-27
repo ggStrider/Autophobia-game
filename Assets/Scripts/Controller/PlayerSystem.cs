@@ -1,10 +1,9 @@
 using Autophobia.Dialogues;
-using UnityEngine;
-using Cinemachine;
-
-using Autophobia.PlayerComponents.Interact;
 using Autophobia.Events;
 using Autophobia.Interact.Features;
+using Autophobia.PlayerComponents.Interact;
+using UnityEngine;
+using Cinemachine;
 
 namespace Autophobia.PlayerComponents
 {

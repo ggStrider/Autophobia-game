@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
-using Autophobia.Model;
-using Autophobia.PlayerComponents;
 using System;
 using System.Collections.Generic;
+using Autophobia.Model;
+using Autophobia.PlayerComponents;
 
 namespace Autophobia.Dialogues
 {
@@ -23,7 +23,7 @@ namespace Autophobia.Dialogues
         private bool _canUse;
 
         private GameSession _gameSession;
-        private int _answerIndex => _gameSession.Data.AnswerIndex;
+        private int DialogueAnswerIndex => _gameSession.Data.DialogueAnswerIndex;
         private int _index;
 
         private void Start()
@@ -82,11 +82,11 @@ namespace Autophobia.Dialogues
                 return;
             }
 
-            var haveToRespondOnPlayerAnswer = _dialoguesData[_index].Answers[_answerIndex].HaveToRespond;
+            var haveToRespondOnPlayerAnswer = _dialoguesData[_index].Answers[DialogueAnswerIndex].HaveToRespond;
             if (haveToRespondOnPlayerAnswer)
             {
                 var nextDialogueInfo = _dialoguesData[_index + 1];
-                var companionRespond = _dialoguesData[_index].Answers[_answerIndex].CompanionRespond;
+                var companionRespond = _dialoguesData[_index].Answers[DialogueAnswerIndex].CompanionRespond;
 
                 nextDialogueInfo.dialogueText = companionRespond;
             }
