@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Autophobia.Events
+namespace Autophobia.InvokeEvents
 {
     public class InvokeUnityEvent : MonoBehaviour
     {

@@ -1,8 +1,10 @@
+using UnityEngine;
+
 using Autophobia.Dialogues;
-using Autophobia.Events;
+using Autophobia.InvokeEvents;
 using Autophobia.Interact.Features;
 using Autophobia.PlayerComponents.Interact;
-using UnityEngine;
+
 using Cinemachine;
 
 namespace Autophobia.PlayerComponents
@@ -20,6 +22,7 @@ namespace Autophobia.PlayerComponents
 
         private SitOnObject _currentSitting;
         private CinemachinePOV _playerCinemachinePov;
+        private CinemachineBrain _cinemachineBrain;
         private Rigidbody _rigidbody;
         private Vector2 _direction;
         private DialogueTalk _dialogue;
@@ -78,10 +81,24 @@ namespace Autophobia.PlayerComponents
             _playerCinemachinePov.m_VerticalAxis.Value = lookAngle.y;
         }
 
+        public void CanCameraRotate(bool canRotate)
+        {
+            _cinemachineBrain.enabled = canRotate;
+        }
+
+        public void CanInteract(bool canInteract)
+        {
+            _canInteract = canInteract;
+        }
+
         private void Awake()
         {
+            Debug.Log("TimeScale = " + Time.timeScale);
             _rigidbody = GetComponent<Rigidbody>();
             _playerCinemachinePov = _playerVirtualCamera.GetCinemachineComponent<CinemachinePOV>();
+
+            _cinemachineBrain = _visionCamera.GetComponent<CinemachineBrain>();
+            CursorChangeState.SetState(true, false);
         }
 
         private void FixedUpdate()
