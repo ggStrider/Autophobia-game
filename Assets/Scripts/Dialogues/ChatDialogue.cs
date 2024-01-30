@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Autophobia.Model;
+using Autophobia.PlayerComponents;
 
 namespace Autophobia.Dialogues
 {
@@ -40,12 +41,20 @@ namespace Autophobia.Dialogues
         [ContextMenu("st d")]
         public void OnChatStart()
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            var playerInputReader = FindObjectOfType<PlayerInputReader>();
+            playerInputReader.RestrictMainMove(true);
+            
+            var playerSystem = FindObjectOfType<PlayerSystem>();
+            playerSystem.CanCameraRotate(false);
             
             SendMessage();
         }
-        
+
+        private void OnEnable()
+        {
+            CursorChangeState.SetState(false, true);
+        }
+
         private void SendMessage()
         {
             if (_messages.Count <= _index || _messages == null) return;
@@ -165,6 +174,13 @@ namespace Autophobia.Dialogues
         
         private void EndChatting()
         {
+            CursorChangeState.SetState(false, true);
+            
+            var playerInputReader = FindObjectOfType<PlayerInputReader>();
+            playerInputReader.RestrictMainMove(false);
+
+            var playerSystem = FindObjectOfType<PlayerSystem>();
+            playerSystem.CanCameraRotate(true);
         }
 
         [Serializable]
@@ -230,4 +246,3 @@ namespace Autophobia.Dialogues
         }
     }
 }
-// 55  400.4878 Lucia

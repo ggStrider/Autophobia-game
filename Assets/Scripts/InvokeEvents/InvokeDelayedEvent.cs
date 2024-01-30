@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System;
 
-namespace Autophobia.Events
+namespace Autophobia.InvokeEvents
 {
     public class InvokeDelayedEvent : MonoBehaviour
     {

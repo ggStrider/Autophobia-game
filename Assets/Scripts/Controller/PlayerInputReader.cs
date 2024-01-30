@@ -19,9 +19,6 @@ namespace Autophobia.PlayerComponents
             _playerMap.PlayerActionMap.GetUp.started += OnKeyGetUp;
 
             _playerMap.Enable();
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
         private void OnMovement(InputAction.CallbackContext context)
