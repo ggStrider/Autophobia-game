@@ -626,10 +626,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 240960546}
-    - target: {fileID: 7097047316652106757, guid: 992115159b786f34f833de7b322c13ec, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8369726237632214378, guid: 992115159b786f34f833de7b322c13ec, type: 3}
       propertyPath: m_Name
       value: ChatStuff

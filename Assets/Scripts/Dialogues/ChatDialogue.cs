@@ -47,12 +47,9 @@ namespace Autophobia.Dialogues
             var playerSystem = FindObjectOfType<PlayerSystem>();
             playerSystem.CanCameraRotate(false);
             
-            SendMessage();
-        }
-
-        private void OnEnable()
-        {
             CursorChangeState.SetState(false, true);
+            
+            SendMessage();
         }
 
         private void SendMessage()

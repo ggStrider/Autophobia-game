@@ -9,6 +9,14 @@ namespace Autophobia.InvokeEvents
         [SerializeField] private bool _canInvoke;
         [SerializeField] private bool _canInvokeOnce;
 
+        [Space] [SerializeField] private bool _invokeOnStart;
+
+        private void Start()
+        {
+            if(_invokeOnStart)
+                InvokeEvent();
+        }
+
         public void InvokeEvent()
         {
             if (!_canInvoke) return;
