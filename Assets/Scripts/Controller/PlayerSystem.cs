@@ -110,7 +110,8 @@ namespace Autophobia.PlayerComponents
             var movementDirection = cameraForward * _direction.y + _visionCamera.transform.right * _direction.x;
             movementDirection.Normalize();
 
-            _rigidbody.MovePosition(_rigidbody.position + movementDirection * _speed * Time.fixedDeltaTime);
+            var velocity = movementDirection * _speed;
+            _rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.z);
 
 #if UNITY_EDITOR
             Debug.DrawRay(_visionCamera.transform.position, _visionCamera.transform.forward * _rayCheckDistance,
