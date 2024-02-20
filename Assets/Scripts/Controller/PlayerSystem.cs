@@ -19,13 +19,15 @@ namespace Autophobia.PlayerComponents
         [SerializeField] private CheckObjectsInRay _checkInRay;
 
         [SerializeField] private bool _canInteract = true;
+        [SerializeField] private bool _cutSceneOnStart;
 
-        private SitOnObject _currentSitting;
+        private Rigidbody _rigidbody;
         private CinemachinePOV _playerCinemachinePov;
         private CinemachineBrain _cinemachineBrain;
-        private Rigidbody _rigidbody;
-        private Vector2 _direction;
+        private SitOnObject _currentSitting;
         private DialogueTalk _dialogue;
+        
+        private Vector2 _direction;
 
         public void SetDirection(Vector2 direction)
         {
@@ -89,6 +91,18 @@ namespace Autophobia.PlayerComponents
         public void CanInteract(bool canInteract)
         {
             _canInteract = canInteract;
+        }
+
+        public void OnCutSceneStarts(bool t)
+        {
+            _cinemachineBrain.enabled = false;
+            _rigidbody.isKinematic = true;
+        }
+
+        public void OnCutSceneEnds()
+        {
+            _cinemachineBrain.enabled = true;
+            _rigidbody.isKinematic = false;
         }
 
         private void Awake()
