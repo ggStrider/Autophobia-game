@@ -9,7 +9,7 @@ namespace Autophobia.Sounds
     {
         [SerializeField] private List<SoundsSettings> _sounds;
 
-        public void PlaySound()
+        public void PlayAllSounds()
         {
             foreach (var sound in _sounds)
             {
@@ -17,16 +17,21 @@ namespace Autophobia.Sounds
                 sound.audioSource.Play();
             }
         }
+
+        public void StopAllSounds()
+        {
+            foreach (var sound in _sounds)
+            {
+                sound.audioSource.Stop();
+            }
+        }
         
         [Serializable]
         public class SoundsSettings
         {
-            [SerializeField] private AudioClip _audioToPlay;
-            public AudioClip audioToPlay => _audioToPlay;
-            
             public AudioSource audioSource;
 
-            [SerializeField] [Range(0, 1)] private float _volume;
+            [SerializeField] [Range(0, 1)] private float _volume = 1f;
             public float volume => _volume;
         }
     }

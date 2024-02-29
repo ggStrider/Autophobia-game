@@ -31,7 +31,6 @@ namespace Autophobia.LevelDesign
                 _cameraShake.Shake(true);
             
             var newPosition = currentInfo.objectToMove.transform.position + currentInfo.moveDelta;
-            Debug.Log($"current {currentInfo}, newPos {newPosition}");
             var elapsedTime = 0.0f;
             
             while (elapsedTime < currentInfo.waitDelta)

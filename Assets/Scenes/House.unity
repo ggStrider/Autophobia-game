@@ -1214,7 +1214,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &250174586 stripped
 Transform:
@@ -1320,7 +1320,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &279025043
 MeshCollider:
@@ -1914,12 +1914,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287455014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7188, y: 0.00000007454946, z: 5.7976947}
+  m_LocalPosition: {x: 3.7188, y: 0, z: 5.7976947}
   m_LocalScale: {x: 0.96820474, y: 1, z: 0.76157343}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &290645426 stripped
 Transform:
@@ -1997,7 +1997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349581694}
   m_Layer: 0
-  m_Name: HouseDecor
+  m_Name: '###Props###'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2570,12 +2570,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalRotation.y
@@ -4215,7 +4223,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &845041125
 GameObject:
@@ -4855,7 +4863,7 @@ GameObject:
   - component: {fileID: 1015484273}
   - component: {fileID: 1015484272}
   m_Layer: 0
-  m_Name: Wall (2)
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4874,7 +4882,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 9
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1015484272
 MeshCollider:
@@ -5240,7 +5248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057207774}
   m_Layer: 0
-  m_Name: Lights
+  m_Name: '###Lights###'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6434,7 +6442,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1358318755
 MeshCollider:
@@ -7884,7 +7892,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1604003127
 GameObject:
@@ -8479,7 +8487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1743646114}
   m_Layer: 0
-  m_Name: HouseBorders
+  m_Name: '###AppartamentsFrame###'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8497,16 +8505,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 287455020}
+  - {fileID: 2005321193}
+  - {fileID: 1015484271}
+  - {fileID: 1941791262}
+  - {fileID: 1358318754}
   - {fileID: 831894791}
   - {fileID: 233991709}
   - {fileID: 1593601351}
-  - {fileID: 2005321193}
-  - {fileID: 1358318754}
   - {fileID: 279025042}
-  - {fileID: 1941791262}
   - {fileID: 2009460725}
-  - {fileID: 1015484271}
+  - {fileID: 287455020}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9854,7 +9862,7 @@ GameObject:
   - component: {fileID: 1941791264}
   - component: {fileID: 1941791263}
   m_Layer: 0
-  m_Name: door
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9873,7 +9881,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1941791263
 MeshCollider:
@@ -10371,7 +10379,7 @@ GameObject:
   - component: {fileID: 2005321189}
   - component: {fileID: 2005321188}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10699,7 +10707,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1743646114}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009460724
 GameObject:
@@ -10716,7 +10724,7 @@ GameObject:
   - component: {fileID: 2009460727}
   - component: {fileID: 2009460726}
   m_Layer: 0
-  m_Name: Wall (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

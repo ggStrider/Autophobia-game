@@ -2654,7 +2654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98261da51739bbb40b69b6eb5bbe0f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tiling: {x: 30, y: 30}
+  _tileDelta: {x: 0, y: 0}
 --- !u!64 &253522837
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5439,7 +5439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98261da51739bbb40b69b6eb5bbe0f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tiling: {x: 0.4, y: 1}
+  _tileDelta: {x: 0, y: 0}
 --- !u!64 &539023657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10088,7 +10088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98261da51739bbb40b69b6eb5bbe0f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tiling: {x: 30, y: 30}
+  _tileDelta: {x: 0, y: 0}
 --- !u!64 &960361592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14626,7 +14626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98261da51739bbb40b69b6eb5bbe0f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tiling: {x: 30, y: 30}
+  _tileDelta: {x: 0, y: 0}
 --- !u!1001 &1413147264
 PrefabInstance:
   m_ObjectHideFlags: 0
