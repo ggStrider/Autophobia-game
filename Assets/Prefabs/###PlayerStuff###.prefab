@@ -77,7 +77,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5847106385166627481}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1709747172
 AudioSource:
@@ -175,53 +175,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &3279167395728800287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5351882464425207065}
-  - component: {fileID: 5881130712126751959}
-  m_Layer: 0
-  m_Name: AdditionalComponents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5351882464425207065
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3279167395728800287}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5847106385166627481}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5881130712126751959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3279167395728800287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3eb508125ee58b44ae0439a552479bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCinemachine: {fileID: 5847106385446437466}
-  _frequency: 1
-  _amplitude: 1
 --- !u!1 &5847106384458724754
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +186,6 @@ GameObject:
   - component: {fileID: 5847106384458724755}
   - component: {fileID: 1578774057}
   - component: {fileID: 1578774055}
-  - component: {fileID: 5233301742089167490}
   m_Layer: 0
   m_Name: '###PlayerStuff###'
   m_TagString: Untagged
@@ -291,19 +243,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5233301742089167490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5847106384458724754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1487532ff7ef9e243a65a440c2485087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cutSceneOnStart: 0
 --- !u!1 &5847106385166627457
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +280,6 @@ Transform:
   m_Children:
   - {fileID: 5847106385446437467}
   - {fileID: 1067393306}
-  - {fileID: 5351882464425207065}
   - {fileID: 5847106385724212828}
   - {fileID: 1709747171}
   m_Father: {fileID: 5847106384458724755}
@@ -458,7 +396,6 @@ MonoBehaviour:
   _playerVirtualCamera: {fileID: 5847106385446437466}
   _checkInRay: {fileID: 5847106385166627458}
   _canInteract: 1
-  _cutSceneOnStart: 0
 --- !u!114 &5847106385166627458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,12 +524,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5847106385724212825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0.000000044703484}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5847106385166627481}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5847106385724212827
 Camera:
@@ -775,7 +712,7 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 0.4
+    m_MaxSpeed: 0.3
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -799,7 +736,7 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 1
-    m_MaxSpeed: 0.4
+    m_MaxSpeed: 0.3
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X

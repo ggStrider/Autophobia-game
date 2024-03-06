@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-using System.Collections;
+using System.Threading.Tasks;
 
 namespace Autophobia.UIs
 {
@@ -17,36 +17,27 @@ namespace Autophobia.UIs
         [SerializeField] private UnityEvent _faded;
         [SerializeField] private UnityEvent _unFaded;
 
-        private void Start()
+        private async void Start()
         {
-            if (_unFadeOnStart) StartCoroutine(UnFade());
+            if (_unFadeOnStart) await UnFade();
         }
 
-        public void OnUnFade()
-        {
-            StartCoroutine(UnFade());
-        }
-
-        public void OnFade()
-        {
-            StartCoroutine(Fade());
-        }
-        
-        private IEnumerator UnFade()
+        public async Task UnFade()
         {
             var newColor = _blackScreen.color;
             while (_blackScreen.color.a > 0)
             {
+                if (_blackScreen == null) return;
                 newColor.a = Mathf.Clamp01(newColor.a - _unFadeSpeed);
                 _blackScreen.color = newColor;
 
-                yield return null;
+                await Task.Yield();
             }
             
             _unFaded?.Invoke();
         }
         
-        private IEnumerator Fade()
+        public async Task Fade()
         {
             var newColor = _blackScreen.color;
             while (_blackScreen.color.a < 1)
@@ -54,7 +45,7 @@ namespace Autophobia.UIs
                 newColor.a = Mathf.Clamp01(newColor.a + _fadeSpeed);
                 _blackScreen.color = newColor;
 
-                yield return null;
+                await Task.Yield();
             }
             
             _faded?.Invoke();

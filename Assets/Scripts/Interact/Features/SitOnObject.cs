@@ -1,6 +1,8 @@
-using Autophobia.PlayerComponents;
 using UnityEngine;
 using UnityEngine.Events;
+
+using Autophobia.PlayerComponents;
+using Autophobia.UIs;
 
 namespace Autophobia.Interact.Features
 {
@@ -20,19 +22,23 @@ namespace Autophobia.Interact.Features
         [Space] [SerializeField] private UnityEvent _satEvent;
         [SerializeField] private UnityEvent _gotUpEvent;
 
-        public void Sit()
+        [SerializeField] private bool _fadeOnChangeState;
+        [SerializeField] private Fader _fader;
+
+        public async void Sit()
         {
             if (!_canSit) return;
-
-
-            _canSit = false;
-
+            
             ChangePlayerSettings(true);
+            _canSit = false;
+            
+            if (_fadeOnChangeState) await _fader.Fade();
 
             var placeWithOffset = _place.transform.position + _sitOffset;
             _player.position = placeWithOffset;
 
             _satEvent?.Invoke();
+            await _fader.UnFade();
         }
 
         public void GetUp()
@@ -52,14 +58,15 @@ namespace Autophobia.Interact.Features
         private void ChangePlayerSettings(bool isSitting)
         {
             _canGetUp = false;
-            
-            var playerMap = _player.GetComponent<PlayerInputReader>();
+
+            Debug.Log(_player);
+            var playerMap = _player.GetComponentInChildren<PlayerInputReader>();
             playerMap.RestrictMainMove(isSitting);
 
-            var playerRigidbody = _player.GetComponent<Rigidbody>();
+            var playerRigidbody = _player.GetComponentInChildren<Rigidbody>();
             playerRigidbody.isKinematic = isSitting;
 
-            var playerSystem = _player.GetComponent<PlayerSystem>();
+            var playerSystem = _player.GetComponentInChildren<PlayerSystem>();
             playerSystem.GetCurrentSitComponent(isSitting ? this : null);
             
             playerSystem.SetDirection(Vector2.zero);

@@ -19,7 +19,6 @@ namespace Autophobia.PlayerComponents
         [SerializeField] private CheckObjectsInRay _checkInRay;
 
         [SerializeField] private bool _canInteract = true;
-        [SerializeField] private bool _cutSceneOnStart;
 
         private Rigidbody _rigidbody;
         private CinemachinePOV _playerCinemachinePov;
@@ -71,10 +70,15 @@ namespace Autophobia.PlayerComponents
                 _currentSitting.GetUp();
         }
 
-        public void SetRestrictXPositionCameraAngle(Vector2 maxAngles)
+        public void SetRestrictXPositionCameraAngle(Vector2 minAngles, Vector2 maxAngles, bool wrapped)
         {
-            _playerCinemachinePov.m_HorizontalAxis.m_MinValue = maxAngles.x;
-            _playerCinemachinePov.m_HorizontalAxis.m_MinValue = maxAngles.y;
+            _playerCinemachinePov.m_HorizontalAxis.m_MinValue = minAngles.x;
+            _playerCinemachinePov.m_VerticalAxis.m_MinValue = minAngles.y;
+            
+            _playerCinemachinePov.m_HorizontalAxis.m_MaxValue = maxAngles.x;
+            _playerCinemachinePov.m_VerticalAxis.m_MaxValue = maxAngles.y;
+
+            _playerCinemachinePov.m_HorizontalAxis.m_Wrap = wrapped;
         }
 
         public void SetCameraRotation(Vector2 lookAngle)
