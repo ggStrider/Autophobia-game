@@ -161,8 +161,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.39061546
-          value: 0.21688306
+          time: 0.42447415
+          value: 0.09178078
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   threshold:
     m_OverrideState: 0
     m_Value: 0.9

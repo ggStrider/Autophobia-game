@@ -1,4 +1,4 @@
-using Autophobia.Utilites;
+using Autophobia.Utilities;
 using UnityEditor;
 using UnityEngine;
 

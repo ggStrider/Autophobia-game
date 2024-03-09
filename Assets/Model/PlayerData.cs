@@ -1,3 +1,4 @@
+using UnityEngine;
 using System;
 
 namespace Autophobia.Model
@@ -7,5 +8,7 @@ namespace Autophobia.Model
     {
         public int DialogueAnswerIndex;
         public int ChatAnswerIndex;
+
+        [Range(0, 1)] public float MasterVolume;
     }
 }

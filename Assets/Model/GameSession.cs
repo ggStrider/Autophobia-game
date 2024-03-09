@@ -1,3 +1,4 @@
+using Autophobia.Controllers;
 using UnityEngine;
 
 namespace Autophobia.Model
@@ -5,10 +6,12 @@ namespace Autophobia.Model
     public class GameSession : MonoBehaviour
     {
         [SerializeField] private PlayerData _data;
+        [SerializeField] private AudioController _audioController;
         public PlayerData Data => _data;
 
         private void Awake()
         {
+            _audioController = GetComponent<AudioController>();
             if (IsSessionsExist())
             {
                 DestroyImmediate(gameObject);
@@ -39,6 +42,13 @@ namespace Autophobia.Model
         public void GetChatAnswer(int index)
         {
             _data.ChatAnswerIndex = index;
+        }
+
+        public void ChangeMasterVolume(float volume)
+        {
+            Debug.Log(volume);
+            _data.MasterVolume = volume;
+            _audioController.CalculateNewMasterVolume();
         }
     }
 }

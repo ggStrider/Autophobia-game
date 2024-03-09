@@ -118,9 +118,45 @@
             "id": "44ffb2ca-c281-405f-aeb2-2eba551f3fd3",
             "actions": [
                 {
-                    "name": "LMB",
+                    "name": "ArrowUp",
                     "type": "Button",
-                    "id": "5bc000a4-5e5a-43e6-a851-f76d6b6c93c4",
+                    "id": "09e78ca7-0efa-4028-9e71-67e720d5232f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ArrowDown",
+                    "type": "Button",
+                    "id": "9c67c42d-172f-4b75-8ace-d5199ec1837e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "e7d0d76b-364d-41b0-916b-97e1e8ddbaa5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ArrowRight",
+                    "type": "Button",
+                    "id": "15142858-1973-482b-85f8-debdf55b0428",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ArrowLeft",
+                    "type": "Button",
+                    "id": "17e4938c-a113-4215-a0e8-ba8153b5db21",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -130,12 +166,56 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "bb142cd6-f7bf-44ab-98b4-4d85dc02fe8f",
-                    "path": "<Mouse>/leftButton",
+                    "id": "cf7a530b-f448-47bc-9bfa-3166e16314e2",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LMB",
+                    "action": "ArrowUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ae8d624-713d-443a-ab02-5972673e9004",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArrowDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c909d7c-ec1b-4bd4-b9e3-c436df946e5c",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "887a1753-1791-4060-a6a2-2d30d77b36d5",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArrowRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "580938ef-269f-4dd7-b6d7-73dcf6d7eb19",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArrowLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

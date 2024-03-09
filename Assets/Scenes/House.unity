@@ -364,6 +364,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7097047316180964205, guid: 992115159b786f34f833de7b322c13ec, type: 3}
+      propertyPath: _messages.Array.data[0].messageText
+      value: "\u041F\u0440\u0438\u0432\u0456\u0442, \u044F \u0442\u0435\u0431\u0435
+        \u0432 \u0447\u0430\u0442\u0456 \u0437\u043D\u0430\u0439\u0448\u043B\u0430
+        \u0456 \u043D\u0435\u043D\u0430\u0440\u043E\u043A\u043E\u043C \u043F\u043E\u043C\u0456\u0442\u0438\u043B\u0430
+        \u0449\u043E \u043C\u0438 \u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u043C\u0456\u0441\u0442\u0430,
+        \u043F\u043E\u0437\u043D\u0430\u0439\u043E\u043C\u0438\u043C\u043E\u0441\u044C?"
+      objectReference: {fileID: 0}
     - target: {fileID: 7097047316652106757, guid: 992115159b786f34f833de7b322c13ec, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -568,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24809d6a81246974a962141797b6cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 446839797}
   _place: {fileID: 145813192}
   _sitOffset: {x: 0, y: 0.6, z: 0}
   _getUpPlace: {fileID: 145813192}
@@ -601,6 +610,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Autophobia.Interact.Features.SitOnObject, Assembly-CSharp
         m_MethodName: Sit
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1762750380}
+        m_TargetAssemblyTypeName: Autophobia.PlayerComponents.PlayerSystem, Assembly-CSharp
+        m_MethodName: _ChangeCursorState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1762750380}
+        m_TargetAssemblyTypeName: Autophobia.PlayerComponents.PlayerSystem, Assembly-CSharp
+        m_MethodName: _CanCameraRotate
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1458,7 +1491,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 984935874}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1483,7 +1516,7 @@ RectTransform:
   m_Children:
   - {fileID: 583153463}
   m_Father: {fileID: 2083427865}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -5.526, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2853,6 +2886,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3587885991085822936, guid: 7a7ba53d58857084e9735573433c42d1, type: 3}
   m_PrefabInstance: {fileID: 424839712}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &446839797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5847106385166627481, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+  m_PrefabInstance: {fileID: 466918058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &466918058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2877,16 +2915,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.93153393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1591
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9663765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.023633
+      value: -3.3291
       objectReference: {fileID: 0}
     - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00051140785
+      value: -0.25397
       objectReference: {fileID: 0}
     - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2548163
+      value: 1.2653
       objectReference: {fileID: 0}
     - target: {fileID: 5847106384458724755, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2918,7 +2968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385166627481, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6921093
+      value: -3.0229108
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385166627481, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2926,15 +2976,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385166627481, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8485146
+      value: 3.1941822
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.49999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
@@ -5040,6 +5094,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!20 &984935874 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5847106385724212827, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+  m_PrefabInstance: {fileID: 466918058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &991381644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8743,7 +8802,7 @@ RectTransform:
   m_Children:
   - {fileID: 1652720479}
   m_Father: {fileID: 2083427865}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9146,6 +9205,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6098996794724728681, guid: 6353832c19eb9674b8143b16ab17c820, type: 3}
   m_PrefabInstance: {fileID: 1754528076}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1762750380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5847106385166627459, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+  m_PrefabInstance: {fileID: 466918058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9edb63d8d9e29f4d836a673e574b47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1776740825
 Mesh:
   m_ObjectHideFlags: 0
@@ -9795,12 +9865,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24809d6a81246974a962141797b6cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 446839797}
   _place: {fileID: 1836406520}
   _sitOffset: {x: 0, y: 0, z: 0.6}
   _getUpPlace: {fileID: 0}
   _getUpOffset: {x: 0, y: 0, z: 0}
   _canSit: 1
-  _canGetUp: 0
+  _canGetUp: 1
   _satEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -11630,8 +11701,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 399988392}
-  - {fileID: 1686707514}
   - {fileID: 268695471}
+  - {fileID: 1686707514}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -140,9 +140,45 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
             ""id"": ""44ffb2ca-c281-405f-aeb2-2eba551f3fd3"",
             ""actions"": [
                 {
-                    ""name"": ""LMB"",
+                    ""name"": ""ArrowUp"",
                     ""type"": ""Button"",
-                    ""id"": ""5bc000a4-5e5a-43e6-a851-f76d6b6c93c4"",
+                    ""id"": ""09e78ca7-0efa-4028-9e71-67e720d5232f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c67c42d-172f-4b75-8ace-d5199ec1837e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7d0d76b-364d-41b0-916b-97e1e8ddbaa5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""15142858-1973-482b-85f8-debdf55b0428"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""17e4938c-a113-4215-a0e8-ba8153b5db21"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -152,12 +188,56 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""bb142cd6-f7bf-44ab-98b4-4d85dc02fe8f"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""cf7a530b-f448-47bc-9bfa-3166e16314e2"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LMB"",
+                    ""action"": ""ArrowUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ae8d624-713d-443a-ab02-5972673e9004"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c909d7c-ec1b-4bd4-b9e3-c436df946e5c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""887a1753-1791-4060-a6a2-2d30d77b36d5"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""580938ef-269f-4dd7-b6d7-73dcf6d7eb19"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -173,7 +253,11 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
         m_PlayerActionMap_GetUp = m_PlayerActionMap.FindAction("GetUp", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_LMB = m_UI.FindAction("LMB", throwIfNotFound: true);
+        m_UI_ArrowUp = m_UI.FindAction("ArrowUp", throwIfNotFound: true);
+        m_UI_ArrowDown = m_UI.FindAction("ArrowDown", throwIfNotFound: true);
+        m_UI_Enter = m_UI.FindAction("Enter", throwIfNotFound: true);
+        m_UI_ArrowRight = m_UI.FindAction("ArrowRight", throwIfNotFound: true);
+        m_UI_ArrowLeft = m_UI.FindAction("ArrowLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -297,12 +381,20 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_LMB;
+    private readonly InputAction m_UI_ArrowUp;
+    private readonly InputAction m_UI_ArrowDown;
+    private readonly InputAction m_UI_Enter;
+    private readonly InputAction m_UI_ArrowRight;
+    private readonly InputAction m_UI_ArrowLeft;
     public struct UIActions
     {
         private @PlayerMap m_Wrapper;
         public UIActions(@PlayerMap wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LMB => m_Wrapper.m_UI_LMB;
+        public InputAction @ArrowUp => m_Wrapper.m_UI_ArrowUp;
+        public InputAction @ArrowDown => m_Wrapper.m_UI_ArrowDown;
+        public InputAction @Enter => m_Wrapper.m_UI_Enter;
+        public InputAction @ArrowRight => m_Wrapper.m_UI_ArrowRight;
+        public InputAction @ArrowLeft => m_Wrapper.m_UI_ArrowLeft;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,16 +404,40 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @LMB.started += instance.OnLMB;
-            @LMB.performed += instance.OnLMB;
-            @LMB.canceled += instance.OnLMB;
+            @ArrowUp.started += instance.OnArrowUp;
+            @ArrowUp.performed += instance.OnArrowUp;
+            @ArrowUp.canceled += instance.OnArrowUp;
+            @ArrowDown.started += instance.OnArrowDown;
+            @ArrowDown.performed += instance.OnArrowDown;
+            @ArrowDown.canceled += instance.OnArrowDown;
+            @Enter.started += instance.OnEnter;
+            @Enter.performed += instance.OnEnter;
+            @Enter.canceled += instance.OnEnter;
+            @ArrowRight.started += instance.OnArrowRight;
+            @ArrowRight.performed += instance.OnArrowRight;
+            @ArrowRight.canceled += instance.OnArrowRight;
+            @ArrowLeft.started += instance.OnArrowLeft;
+            @ArrowLeft.performed += instance.OnArrowLeft;
+            @ArrowLeft.canceled += instance.OnArrowLeft;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @LMB.started -= instance.OnLMB;
-            @LMB.performed -= instance.OnLMB;
-            @LMB.canceled -= instance.OnLMB;
+            @ArrowUp.started -= instance.OnArrowUp;
+            @ArrowUp.performed -= instance.OnArrowUp;
+            @ArrowUp.canceled -= instance.OnArrowUp;
+            @ArrowDown.started -= instance.OnArrowDown;
+            @ArrowDown.performed -= instance.OnArrowDown;
+            @ArrowDown.canceled -= instance.OnArrowDown;
+            @Enter.started -= instance.OnEnter;
+            @Enter.performed -= instance.OnEnter;
+            @Enter.canceled -= instance.OnEnter;
+            @ArrowRight.started -= instance.OnArrowRight;
+            @ArrowRight.performed -= instance.OnArrowRight;
+            @ArrowRight.canceled -= instance.OnArrowRight;
+            @ArrowLeft.started -= instance.OnArrowLeft;
+            @ArrowLeft.performed -= instance.OnArrowLeft;
+            @ArrowLeft.canceled -= instance.OnArrowLeft;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -347,6 +463,10 @@ public partial class @PlayerMap: IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnLMB(InputAction.CallbackContext context);
+        void OnArrowUp(InputAction.CallbackContext context);
+        void OnArrowDown(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+        void OnArrowRight(InputAction.CallbackContext context);
+        void OnArrowLeft(InputAction.CallbackContext context);
     }
 }
