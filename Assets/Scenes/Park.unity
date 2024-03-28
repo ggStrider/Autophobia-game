@@ -1600,7 +1600,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 58b83c33299944842875c893242a8ec6, type: 3}
-        m_Scale: {x: 0.4, y: 1}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -1624,7 +1624,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 58b83c33299944842875c893242a8ec6, type: 3}
-        m_Scale: {x: 0.4, y: 1}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -2023,7 +2023,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -2047,7 +2047,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -4682,6 +4682,8 @@ MonoBehaviour:
   _data:
     DialogueAnswerIndex: 0
     ChatAnswerIndex: 0
+    MasterVolume: 0
+  _audioController: {fileID: 0}
 --- !u!4 &453148527
 Transform:
   m_ObjectHideFlags: 0
@@ -11933,7 +11935,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -11957,7 +11959,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -13763,6 +13765,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1709747172, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5847106384458724754, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_Name
       value: '###PlayerStuff###'
@@ -13816,6 +13822,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212827, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847106385724212827, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: far clip plane
       value: 50
       objectReference: {fileID: 0}
@@ -13825,7 +13835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5847106385724212828, guid: a02cc16e103490c42acb7ba865206cfa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16760,7 +16770,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
@@ -16784,7 +16794,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 4aed432c5f558c740b8c10ebd5ae625b, type: 3}
-        m_Scale: {x: 30, y: 30}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
